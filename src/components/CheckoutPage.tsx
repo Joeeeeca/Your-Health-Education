@@ -9,9 +9,9 @@ import { useCart } from "@/lib/cart-context"
 import { OrderSummary } from "@/components/OrderSummary"
 
 export function CheckoutPage() {
-  const { items, getTotal, clearCart } = useCart()
+  const { items, clearCart } = useCart()
   const navigate = useNavigate()
-  const [isProcessing, setIsProcessing] = useState(false)
+ const [, setIsProcessing] = useState(false)
 
   const [formData, setFormData] = useState({
     firstName: "",

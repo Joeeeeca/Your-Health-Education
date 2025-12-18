@@ -4,7 +4,7 @@ import { useCart } from "@/lib/cart-context"
 import { Link } from "react-router-dom"
 
 export function OrderSummary() {
-  const { items, getTotal } = useCart()
+  const { items} = useCart()
 
   const subtotal = items.reduce(
     (sum, item) => sum + item.price * item.quantity,

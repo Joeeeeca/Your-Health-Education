@@ -10,7 +10,6 @@ export function CartPage() {
     items,
     removeFromCart,
     updateQuantity,
-    getTotal,
     clearCart,
   } = useCart()
 
