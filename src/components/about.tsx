@@ -11,7 +11,7 @@ export function AboutPage() {
             <div className="order-2 md:order-1">
               <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src={`${import.meta.env.BASE_URL}about-me-picture.png`}
+                  src={`${import.meta.env.BASE_URL}about-me-picture.jpg`}
                   alt="Brad Salter"
                   className="h-full w-full object-cover"
                   loading="eager"
