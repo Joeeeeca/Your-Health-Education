@@ -62,7 +62,7 @@ export function OrderSummary() {
         </span>
       </div>
 
-      <Link to="/CheckoutPage"> <Button size="lg" className="w-full text-lg py-6 cursor-pointer">
+      <Link to="/checkout"> <Button size="lg" className="w-full text-lg py-6 cursor-pointer">
         Complete Order
       </Button>
       

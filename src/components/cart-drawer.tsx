@@ -1,16 +1,29 @@
+import { useEffect, useRef } from "react"
+import { Link } from "react-router-dom"
+import { X, ShoppingCart } from "lucide-react"
+
 import { useCart } from "@/lib/cart-context"
 import { Button } from "@/components/ui/Button"
-import { X, ShoppingCart } from "lucide-react"
-import { Link } from "react-router-dom"
 
 export function CartDrawer() {
   const { items, getTotal, isDrawerOpen, setIsDrawerOpen } = useCart()
+
+  // Ref for focus management
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+
+  // Move focus into drawer when it opens
+  useEffect(() => {
+    if (isDrawerOpen) {
+      closeButtonRef.current?.focus()
+    }
+  }, [isDrawerOpen])
 
   return (
     <div
       className={`fixed right-0 top-0 h-full bg-background border-l border-border shadow-2xl z-50 transition-transform duration-300 ease-in-out w-96 ${
         isDrawerOpen ? "translate-x-0" : "translate-x-full"
       }`}
+      aria-hidden={!isDrawerOpen}
     >
       <div className="flex flex-col h-full">
         {/* Header */}
@@ -21,6 +34,7 @@ export function CartDrawer() {
           </div>
 
           <button
+            ref={closeButtonRef}
             onClick={() => setIsDrawerOpen(false)}
             className="p-2 hover:bg-muted rounded-lg transition-colors"
             aria-label="Close cart"
@@ -77,7 +91,7 @@ export function CartDrawer() {
               </span>
             </div>
 
-            <Link to="/CartPage" onClick={() => setIsDrawerOpen(false)}>
+            <Link to="/cart" onClick={() => setIsDrawerOpen(false)}>
               <Button className="w-full" size="lg">
                 View Cart & Checkout
               </Button>

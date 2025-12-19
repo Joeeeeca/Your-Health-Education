@@ -35,7 +35,7 @@ export function Navigation() {
             Contact
           </Link>
 
-          <Link to="/CartPage" aria-label="View shopping cart" className="relative text-foreground hover:text-primary transition-colors focus-visible:text-primary">
+          <Link to="/cart" aria-label="View shopping cart" className="relative text-foreground hover:text-primary transition-colors focus-visible:text-primary">
             <ShoppingCart className="h-6 w-6" />
             {itemCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
