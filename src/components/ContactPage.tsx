@@ -8,8 +8,13 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, MessageSquare, User } from "lucide-react"
 import { useState } from "react"
+import { Helmet } from "react-helmet-async"
+import { usePageFocus } from "@/hooks/usePageFocus"
 
 export function ContactPage() {
+
+  usePageFocus()
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -45,7 +50,23 @@ export function ContactPage() {
   }
 
   return (
+    
+    
     <main className="min-h-screen">
+
+<Helmet>
+  <title>Contact | Your Health Education</title>
+  <meta
+    name="description"
+    content="Get in touch with Your Health Education for coaching, courses, or support."
+  />
+
+  <link
+  rel="canonical"
+  href="https://joeeeeca.github.io/Your-Health-Education/#/contact"
+/>
+
+</Helmet>
 
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-4xl">

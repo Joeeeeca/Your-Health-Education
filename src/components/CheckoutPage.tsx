@@ -7,8 +7,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useCart } from "@/lib/cart-context"
 import { OrderSummary } from "@/components/OrderSummary"
+import { usePageFocus } from "@/hooks/usePageFocus"
 
 export function CheckoutPage() {
+  usePageFocus()
+  
   const { items, clearCart } = useCart()
   const navigate = useNavigate()
  const [, setIsProcessing] = useState(false)

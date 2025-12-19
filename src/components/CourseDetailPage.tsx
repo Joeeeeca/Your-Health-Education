@@ -1,21 +1,33 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { Helmet } from "react-helmet-async"
 import { SubscribeFooter } from "@/components/SubscribeFooter"
 import { Button } from "@/components/ui/Button"
 import { Check, ShoppingCart } from "lucide-react"
 import { getCourseBySlug } from "@/lib/course-data"
 import { useCart } from "@/lib/cart-context"
-import { useNavigate } from "react-router-dom"
 
 export function CourseDetailPage() {
   const { slug } = useParams<{ slug: string }>()
   const course = slug ? getCourseBySlug(slug) : undefined
   const { addToCart } = useCart()
+  const navigate = useNavigate()
   const [addedToCart, setAddedToCart] = useState(false)
 
+  /* ---------------------------
+     Course NOT FOUND
+  ---------------------------- */
   if (!course) {
     return (
       <>
+        <Helmet>
+          <title>Course Not Found | Your Health Education</title>
+          <meta
+            name="description"
+            content="The course you are looking for does not exist."
+          />
+        </Helmet>
+
         <main className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Course Not Found</h1>
@@ -28,6 +40,9 @@ export function CourseDetailPage() {
     )
   }
 
+  /* ---------------------------
+     Handlers
+  ---------------------------- */
   const handleAddToCart = () => {
     addToCart({
       slug: course.slug,
@@ -40,26 +55,44 @@ export function CourseDetailPage() {
     setTimeout(() => setAddedToCart(false), 2000)
   }
 
+  const handleBuyNow = () => {
+    addToCart(
+      {
+        slug: course.slug,
+        title: course.title,
+        price: course.price,
+        image: course.image,
+      },
+      { openDrawer: false }
+    )
 
-  const navigate = useNavigate()
+    navigate("/CheckoutPage")
+  }
 
-const handleBuyNow = () => {
-  addToCart(
-    {
-      slug: course.slug,
-      title: course.title,
-      price: course.price,
-      image: course.image,
-    },
-    { openDrawer: false }
-  )
-
-  navigate("/CheckoutPage")
-}
-
-
+  /* ---------------------------
+     Normal page render
+  ---------------------------- */
   return (
     <>
+      <Helmet>
+        <title>{course.title} | Your Health Education</title>
+        <meta name="description" content={course.description} />
+
+        <link
+  rel="canonical"
+  href={`https://joeeeeca.github.io/Your-Health-Education/#/courses/${course.slug}`}
+/>
+
+
+        {/* Open Graph */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={course.title} />
+        <meta property="og:description" content={course.description} />
+        <meta
+          property="og:image"
+          content={`${import.meta.env.BASE_URL}${course.image}`}
+        />
+      </Helmet>
 
       <main className="min-h-screen">
         <section className="py-16 md:py-24">
@@ -109,18 +142,20 @@ const handleBuyNow = () => {
                 </div>
 
                 <div className="space-y-4 pt-4">
-                <Button
-  size="lg"
-  className="w-full text-lg py-7 cursor-pointer"
-  onClick={handleBuyNow}
->
-  Buy Now
-</Button>
+                  <Button
+                    size="lg"
+                    className="w-full text-lg py-7"
+                    aria-label="Buy this course"
+                    onClick={handleBuyNow}
+                  >
+                    Buy Now
+                  </Button>
 
                   <Button
                     size="lg"
                     variant="outline"
-                    className="w-full text-lg py-7 bg-transparent cursor-pointer"
+                    className="w-full text-lg py-7 bg-transparent"
+                    aria-label="Add this course to your cart"
                     onClick={handleAddToCart}
                   >
                     <ShoppingCart className="mr-2 h-5 w-5" />

@@ -4,8 +4,12 @@ import { useCart } from "@/lib/cart-context"
 import { Link } from "react-router-dom"
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
 import { OrderSummary } from "@/components/OrderSummary"
+import { Helmet } from "react-helmet-async"
+import { usePageFocus } from "@/hooks/usePageFocus"
 
 export function CartPage() {
+  usePageFocus()
+  
   const {
     items,
     removeFromCart,
@@ -46,6 +50,12 @@ export function CartPage() {
 
   return (
     <>
+<Helmet>
+    <link
+  rel="canonical"
+  href="https://joeeeeca.github.io/Your-Health-Education/#/cart"
+/>
+</Helmet>
 
       <main className="min-h-screen py-16 md:py-24">
         <div className="container mx-auto px-4">
