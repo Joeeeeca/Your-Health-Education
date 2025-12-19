@@ -95,18 +95,22 @@ export function CartPage() {
                 {items.map((item) => (
                   <div
                     key={item.slug}
-                    className="bg-card border rounded-xl p-6 flex gap-6"
+                    className="bg-card border rounded-xl p-4 md:p-6 flex flex-col md:flex-row gap-4 md:gap-6"
                   >
-                    <div className="w-32 h-32 shrink-0 rounded-lg overflow-hidden">
-                      <img
-                        src={item.image || "/placeholder.svg"}
-                        alt={item.title}
-                        className="h-full w-full object-cover"
-                      />
+                    <div className="w-full md:w-32 h-40 md:h-32 shrink-0 rounded-lg overflow-hidden">
+ <img
+  src={
+    item.image
+      ? `${import.meta.env.BASE_URL}${item.image}`
+      : `${import.meta.env.BASE_URL}placeholder.svg`
+  }
+  alt={item.title}
+  className="h-full w-full object-cover"
+/>
                     </div>
 
                     <div className="flex-1 space-y-3">
-                      <div className="flex items-start justify-between gap-4">
+                      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                         <div>
                           <Link
                             to={`/courses/${item.slug}`}
@@ -132,7 +136,7 @@ export function CartPage() {
                         </Button>
                       </div>
 
-                      <div className="flex items-center gap-3">
+                      <div className="flex flex-wrap items-center gap-3">
                         <Button
                           variant="outline"
                           onClick={() =>
@@ -163,7 +167,7 @@ export function CartPage() {
                 ))}
               </div>
 
-             <div className="lg:col-span-1">
+             <div className="lg:col-span-1 mt-8 lg:mt-0">
   <OrderSummary />
 </div>
             </div>
