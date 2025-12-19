@@ -67,10 +67,14 @@ export function CartDrawer() {
                   className="flex gap-4 p-4 bg-muted/30 rounded-lg"
                 >
                   <img
-                    src={item.image || "/placeholder.svg"}
-                    alt={item.title}
-                    className="w-20 h-20 rounded-lg object-cover"
-                    loading="lazy"
+                     src={
+    item.image
+      ? `${import.meta.env.BASE_URL}${item.image}`
+      : `${import.meta.env.BASE_URL}placeholder.svg`
+  }
+  alt={item.title}
+  className="w-20 h-20 max-w-full rounded-lg object-cover"
+  loading="lazy"
                   />
 
                   <div className="flex-1">

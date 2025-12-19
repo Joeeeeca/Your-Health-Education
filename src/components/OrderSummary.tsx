@@ -23,7 +23,7 @@ export function OrderSummary() {
         {items.map((item) => (
           <div key={item.slug} className="flex gap-4 items-start">
             <img
-              src={item.image}
+              src={`${import.meta.env.BASE_URL}${item.image}`}
               alt={item.title}
               className="h-16 w-16 rounded-md object-cover"
             />
