@@ -16,7 +16,6 @@ createRoot(document.getElementById("root")!).render(
         <HelmetProvider>
     <ScrollToTop />
       <CartProvider>
-        <Navigation />
         <PageWrapper>
           <App />
         </PageWrapper>

@@ -14,7 +14,7 @@ import { usePageFocus } from "@/hooks/usePageFocus"
 export function ContactPage() {
 
   usePageFocus()
-  
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -56,16 +56,27 @@ export function ContactPage() {
 
 <Helmet>
   <title>Contact | Your Health Education</title>
+
   <meta
     name="description"
     content="Get in touch with Your Health Education for coaching, courses, or support."
   />
 
   <link
-  rel="canonical"
-  href="https://joeeeeca.github.io/Your-Health-Education/#/contact"
-/>
+    rel="canonical"
+    href="https://joeeeeca.github.io/Your-Health-Education/#/contact"
+  />
 
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact | Your Health Education" />
+  <meta
+    property="og:description"
+    content="Get in touch with Your Health Education for coaching, courses, or support."
+  />
+  <meta
+    property="og:url"
+    content="https://joeeeeca.github.io/Your-Health-Education/#/contact"
+  />
 </Helmet>
 
       <section className="py-20 px-4">

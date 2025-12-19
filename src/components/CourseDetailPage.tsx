@@ -14,9 +14,7 @@ export function CourseDetailPage() {
   const navigate = useNavigate()
   const [addedToCart, setAddedToCart] = useState(false)
 
-  /* ---------------------------
-     Course NOT FOUND
-  ---------------------------- */
+  /* ---------- NOT FOUND STATE ---------- */
   if (!course) {
     return (
       <>
@@ -26,13 +24,17 @@ export function CourseDetailPage() {
             name="description"
             content="The course you are looking for does not exist."
           />
+          <link
+            rel="canonical"
+            href="https://joeeeeca.github.io/Your-Health-Education/#/courses"
+          />
         </Helmet>
 
         <main className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Course Not Found</h1>
             <p className="text-muted-foreground">
-              The course you're looking for doesn't exist.
+              The course you&apos;re looking for doesn&apos;t exist.
             </p>
           </div>
         </main>
@@ -40,9 +42,7 @@ export function CourseDetailPage() {
     )
   }
 
-  /* ---------------------------
-     Handlers
-  ---------------------------- */
+  /* ---------- HANDLERS ---------- */
   const handleAddToCart = () => {
     addToCart({
       slug: course.slug,
@@ -69,9 +69,7 @@ export function CourseDetailPage() {
     navigate("/CheckoutPage")
   }
 
-  /* ---------------------------
-     Normal page render
-  ---------------------------- */
+  /* ---------- MAIN PAGE ---------- */
   return (
     <>
       <Helmet>
@@ -79,10 +77,9 @@ export function CourseDetailPage() {
         <meta name="description" content={course.description} />
 
         <link
-  rel="canonical"
-  href={`https://joeeeeca.github.io/Your-Health-Education/#/courses/${course.slug}`}
-/>
-
+          rel="canonical"
+          href={`https://joeeeeca.github.io/Your-Health-Education/#/courses/${course.slug}`}
+        />
 
         {/* Open Graph */}
         <meta property="og:type" content="article" />
@@ -92,13 +89,16 @@ export function CourseDetailPage() {
           property="og:image"
           content={`${import.meta.env.BASE_URL}${course.image}`}
         />
+        <meta
+          property="og:url"
+          content={`https://joeeeeca.github.io/Your-Health-Education/#/courses/${course.slug}`}
+        />
       </Helmet>
 
       <main className="min-h-screen">
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto items-start">
-              
               {/* Image */}
               <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-2xl">
                 <img
@@ -112,10 +112,10 @@ export function CourseDetailPage() {
               {/* Details */}
               <div className="space-y-8">
                 <div>
-                  <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
+                  <h1 className="text-4xl md:text-5xl font-bold mb-4">
                     {course.title}
                   </h1>
-                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                  <p className="text-lg md:text-xl text-muted-foreground">
                     {course.description}
                   </p>
                 </div>
@@ -128,15 +128,13 @@ export function CourseDetailPage() {
 
                 <div className="space-y-3">
                   <h2 className="text-2xl font-semibold mb-4">
-                    What You'll Learn
+                    What You&apos;ll Learn
                   </h2>
 
                   {course.features.map((feature, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <Check className="h-6 w-6 text-primary mt-1 shrink-0" />
-                      <p className="text-base md:text-lg leading-relaxed">
-                        {feature}
-                      </p>
+                      <p className="text-base md:text-lg">{feature}</p>
                     </div>
                   ))}
                 </div>
@@ -145,7 +143,6 @@ export function CourseDetailPage() {
                   <Button
                     size="lg"
                     className="w-full text-lg py-7"
-                    aria-label="Buy this course"
                     onClick={handleBuyNow}
                   >
                     Buy Now
@@ -155,7 +152,6 @@ export function CourseDetailPage() {
                     size="lg"
                     variant="outline"
                     className="w-full text-lg py-7 bg-transparent"
-                    aria-label="Add this course to your cart"
                     onClick={handleAddToCart}
                   >
                     <ShoppingCart className="mr-2 h-5 w-5" />
@@ -164,12 +160,11 @@ export function CourseDetailPage() {
                 </div>
 
                 <div className="border-t pt-6">
-                  <p className="text-base leading-relaxed text-muted-foreground">
+                  <p className="text-muted-foreground">
                     {course.longDescription}
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
         </section>

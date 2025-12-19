@@ -1,8 +1,36 @@
 import { SubscribeFooter } from "@/components/SubscribeFooter"
+import { usePageFocus } from "@/hooks/usePageFocus"
+import { Helmet } from "react-helmet-async"
 
 export function AboutPage() {
+  usePageFocus()
+  
   return (
     <main className="min-h-screen">
+      <Helmet>
+  <title>About Brad Salter | Your Health Education</title>
+
+  <meta
+    name="description"
+    content="Learn about Brad Salter, founder of Your Health Education and pioneer in evidence-based health coaching."
+  />
+
+  <link
+    rel="canonical"
+    href="https://joeeeeca.github.io/Your-Health-Education/#/about"
+  />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="About Brad Salter | Your Health Education" />
+  <meta
+    property="og:description"
+    content="Learn about Brad Salter, founder of Your Health Education and pioneer in evidence-based health coaching."
+  />
+  <meta
+    property="og:url"
+    content="https://joeeeeca.github.io/Your-Health-Education/#/about"
+  />
+</Helmet>
 
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">

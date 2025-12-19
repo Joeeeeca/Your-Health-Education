@@ -9,7 +9,7 @@ import { usePageFocus } from "@/hooks/usePageFocus"
 
 export function CartPage() {
   usePageFocus()
-  
+
   const {
     items,
     removeFromCart,
@@ -51,11 +51,26 @@ export function CartPage() {
   return (
     <>
 <Helmet>
-    <link
-  rel="canonical"
-  href="https://joeeeeca.github.io/Your-Health-Education/#/cart"
-/>
+  <title>Your Cart | Your Health Education</title>
+
+  <meta
+    name="description"
+    content="Review your selected courses and proceed to secure checkout."
+  />
+
+  <link
+    rel="canonical"
+    href="https://joeeeeca.github.io/Your-Health-Education/#/cart"
+  />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Your Cart | Your Health Education" />
+  <meta
+    property="og:description"
+    content="Review your selected courses and proceed to secure checkout."
+  />
 </Helmet>
+
 
       <main className="min-h-screen py-16 md:py-24">
         <div className="container mx-auto px-4">

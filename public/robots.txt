@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://joeeeeca.github.io/Your-Health-Education/sitemap.xml

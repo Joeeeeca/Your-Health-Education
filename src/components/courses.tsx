@@ -10,17 +10,30 @@ export function CoursesPage() {
   return (
     <>
     <Helmet>
-        <title>Courses | Your Health Education</title>
-        <meta
-          name="description"
-          content="Explore evidence-based health and nutrition courses designed to improve physical and mental performance."
-        />
+  <title>Courses | Your Health Education</title>
 
-        <link
-  rel="canonical"
-  href="https://joeeeeca.github.io/Your-Health-Education/#/courses"
-/>
-      </Helmet>
+  <meta
+    name="description"
+    content="Explore evidence-based health and nutrition courses designed to improve physical and mental performance."
+  />
+
+  <link
+    rel="canonical"
+    href="https://joeeeeca.github.io/Your-Health-Education/#/courses"
+  />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Courses | Your Health Education" />
+  <meta
+    property="og:description"
+    content="Explore evidence-based health and nutrition courses designed to improve physical and mental performance."
+  />
+  <meta
+    property="og:url"
+    content="https://joeeeeca.github.io/Your-Health-Education/#/courses"
+  />
+</Helmet>
+
       <main className="min-h-screen">
         <section className="py-16 md:py-24 bg-muted/30">
           <div className="container mx-auto px-4">
